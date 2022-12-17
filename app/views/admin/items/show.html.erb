@@ -1,0 +1,45 @@
+<main>
+    <div class="container">
+        <h1>商品詳細</h1>
+      <div class="row">
+            
+            <div class="col-md-4">
+            
+                <ul>
+                
+                    <% if @item.image.attached? %>
+                        <label><%= image_tag @item.image, size: "100x100" %></label>
+                    <% else %>
+                        <label><%= image_tag 'no_image', size: "100x100" %></label>
+                    <% end %>
+                    
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <ul>
+                    <label>商品名</label>
+                    <label><%=@item.name%></label>
+                </ul>
+                <ul>
+                    <label>商品説明</label>
+                    <label><%=@item.introduction%></label>
+                </ul>
+                <ul>
+                    <label>税込価格</label>
+                    <label><%=@item.price%></label>
+                </ul>
+                <ul>
+                    <label>販売ステータス</label>
+                    <%if @item.is_active == true%>
+                            <label>販売中</label>
+                        <%else%>
+                            <label>販売停止</label>
+                        <%end%>
+                </ul>
+                <ul>
+                    <%=link_to '編集',admin_items_edit_path, class: "btn btn-secondary"%>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
